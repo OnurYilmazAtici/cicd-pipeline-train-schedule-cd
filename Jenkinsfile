@@ -9,4 +9,14 @@ pipeline {
             }
         }
     }
+    stage ('devamqee') {
+            when {
+                branch 'master'
+                
+            }
+            steps {
+                echo 'ahey'
+                sh './gradlew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+            }    
 }
